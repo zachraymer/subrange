@@ -3,7 +3,6 @@ var fs = require('fs');
 var readSource = './input.txt';
 
 var inputArr = fs.readFileSync(readSource).toString().split("\n");
-console.log(inputArr)
 
 var k; 
 var n;
@@ -24,35 +23,60 @@ console.log('this is n', n);
 console.log('this is k', k)
 console.log('this is sub array', subArr);
 
+function findIncr(arr) {
+	count = 0;
+	for(i=0; i<arr.length-1; i++){
+		var increasing = false
+		for(j=i+1; j<arr.length; j++){
+			if(!arr[j]>arr[j-1]){
+				increasing=false
+				break
+			}
+			if(increasing){
+				count+=1;
+			}
+			if(arr[j]>arr[j-1]){
+				count+=1;
+				increasing=true
+			}
+		}
+	}
+	return count
+}
+
+function findDecr(arr) {
+	count = 0;
+	for(i=0; i<arr.length-1; i++){
+		var decreasing = false
+		for(j=i+1; j<arr.length; j++){
+			if(decreasing){
+				count+=1;
+			}
+			else if(arr[j]<arr[j-1]){
+				count+=1;
+				decreasing=true
+			}else{
+				decreasing=false
+			}
+		}
+	}
+	return count
+}
+console.log('please work: ',findIncr([188930,194123,201345,154243]))
+
+
 function subRange(n,k,arr) {
 	if(arr.length<k){
 		return;
 	};
-	var incr = 0;
-	var decr = 0;
-	for(i=0; i<=k-1; i++){
-		if(arr[i]<arr[i+1]){
-			if(incr===0){
-				incr+=2
-			}else{
-				incr+=1
-			}
-		}
-		if(arr[i]<arr[i-1]){
-			if(decr===0){
-				decr+=2
-			}else{
-				decr+=1
-			}
-		}
-	}
-	console.log(incr-decr);
+	currSubRange = arr.slice(0,k)
+	console.log(currSubRange)
+	console.log(findIncr(currSubRange)-findDecr(currSubRange));
 	arr.splice(0,1);
-	console.log(arr);
 	subRange(n,k,arr);
 }
 
-subRange(n, k, subArr);
+// subRange(n, k, subArr);
 
 
 
