@@ -1,5 +1,7 @@
 # subrange
 Simple node command-line app that analyzes subranges from a .txt file
 
-To run:
-open in terminal and run "npm start"
+To run:  
+•Populate input.txt with subrange data  
+•Open terminal and run "npm start"  
+
