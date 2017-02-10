@@ -1,7 +1,7 @@
 {
   "name": "subrange",
   "version": "0.1.0",
-  "description": "",
+  "description": "Simple node command line app that analyzes subranges from a .txt file",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
